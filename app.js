@@ -23,7 +23,7 @@ function adicionarAmigo() {
         return;
     }
 
-    if (nomeDisponivel.includes(nome)) { // Evita nomes duplicados
+    if (nomeDisponivel.includes(nome)) { // Verificar se há nomes duplicados
         alert('Este nome já foi adicionado!');
         return;
     }
@@ -31,4 +31,16 @@ function adicionarAmigo() {
     nomeDisponivel.push(nome);
     campoNome.value = ''; // Limpa o campo de entrada
     exibirListaNaTela();
+}
+
+// Exibe a lista na tela
+function exibirListaNaTela() {
+    let lista = document.querySelector('#listaAmigos');
+    lista.innerHTML = ''; // Limpa a exibição anterior
+    
+    nomeDisponivel.forEach(nome => {
+        let elemento = document.createElement('p');
+        elemento.textContent = nome;
+        lista.appendChild(elemento);
+    });
 }
